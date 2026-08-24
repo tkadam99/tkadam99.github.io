@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanmay Kadam — Software Engineer</title>
+<meta name="description" content="Tanmay Kadam — Software Engineer building resilient data pipelines and full-stack systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1420;
+    --bg-alt:#0B1019;
+    --surface:#161E2E;
+    --surface-2:#1C2536;
+    --border:#28324A;
+    --text:#EDEFF3;
+    --text-muted:#8B93A5;
+    --text-dim:#5C6579;
+    --amber:#E8A33D;
+    --amber-dim:#8A661F;
+    --teal:#49C5B6;
+    --teal-dim:#2A6E66;
+    --radius:10px;
+    --maxw:1120px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth; scroll-padding-top:90px;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  .display{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  ::selection{background:var(--amber);color:var(--bg);}
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding-left:32px;
+    padding-right:32px;
+  }
+
+  /* ---------- background texture ---------- */
+  .grain-bg{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(232,163,61,0.08), transparent 60%),
+      radial-gradient(ellipse 900px 600px at 100% 10%, rgba(73,197,182,0.07), transparent 60%),
+      var(--bg);
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(10px);
+    background:rgba(14,20,32,0.82);
+    border-bottom:1px solid var(--border);
+  }
+  nav{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'JetBrains Mono',monospace;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:0.02em;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 8px var(--amber);
+  }
+  .navlinks{
+    display:flex;
+    gap:36px;
+    align-items:center;
+  }
+  .navlinks a{
+    font-size:13.5px;
+    font-family:'JetBrains Mono',monospace;
+    color:var(--text-muted);
+    letter-spacing:0.03em;
+    transition:color .2s ease;
+  }
+  .navlinks a:hover{color:var(--amber);}
+  .nav-cta{
+    border:1px solid var(--border);
+    padding:7px 16px;
+    border-radius:6px;
+    font-size:13px;
+    color:var(--text) !important;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .nav-cta:hover{border-color:var(--amber); background:rgba(232,163,61,0.08);}
+  .navtoggle{display:none;}
+  .nav-cta-mobile{display:none;}
+
+  @media (max-width:760px){
+    .navlinks{display:none;}
+    .nav-cta-mobile{
+      display:inline-flex;
+      border:1px solid var(--border);
+      padding:7px 14px;
+      border-radius:6px;
+      font-size:12.5px;
+      font-family:'JetBrains Mono',monospace;
+      color:var(--text);
+    }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:100px 0 70px;
+    position:relative;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;height:1px;
+    background:var(--teal);
+  }
+  h1{
+    font-size:clamp(38px,6.4vw,68px);
+    line-height:1.04;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    max-width:920px;
+  }
+  h1 .accent{color:var(--amber);}
+  .hero-sub{
+    margin-top:26px;
+    max-width:600px;
+    font-size:17.5px;
+    color:var(--text-muted);
+    line-height:1.65;
+  }
+  .hero-actions{
+    margin-top:38px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13.5px;
+    padding:13px 24px;
+    border-radius:7px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:all .2s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:var(--amber);
+    color:#1a1204;
+    font-weight:600;
+  }
+  .btn-primary:hover{background:#f0b45b; transform:translateY(-1px);}
+  .btn-ghost{
+    border-color:var(--border);
+    color:var(--text);
+  }
+  .btn-ghost:hover{border-color:var(--teal); color:var(--teal);}
+
+  /* ---------- pipeline signature ---------- */
+  .pipeline{
+    margin-top:74px;
+    padding:30px 26px 22px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow-x:auto;
+  }
+  .pipeline-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--text-dim);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .pipeline-track{
+    position:relative;
+    min-width:640px;
+    height:70px;
+  }
+  .pipeline-line{
+    position:absolute;
+    top:6px;
+    left:0;right:0;
+    height:1px;
+    background:var(--border);
+  }
+  .pipeline-progress{
+    position:absolute;
+    top:6px;
+    left:0;
+    height:2px;
+    width:100%;
+    background:linear-gradient(90deg, var(--amber), var(--teal));
+    transform-origin:left;
+    animation:flow 4.5s ease-in-out infinite;
+    opacity:0.8;
+  }
+  @keyframes flow{
+    0%{transform:scaleX(0);}
+    45%{transform:scaleX(1);}
+    100%{transform:scaleX(1);}
+  }
+  .pipeline-nodes{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    height:100%;
+  }
+  .pnode{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:22px;
+    position:relative;
+  }
+  .pnode .dot{
+    width:11px;height:11px;
+    border-radius:50%;
+    background:var(--bg-alt);
+    border:2px solid var(--text-dim);
+    z-index:2;
+    transition:border-color .3s ease, background .3s ease, box-shadow .3s ease;
+  }
+  .pnode.lit .dot{
+    border-color:var(--amber);
+    background:var(--amber);
+    box-shadow:0 0 12px rgba(232,163,61,0.7);
+  }
+  .pnode span.lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    color:var(--text-muted);
+    white-space:nowrap;
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:120px 0;}
+  .section-head{
+    margin-bottom:56px;
+    max-width:640px;
+  }
+  h2{
+    font-size:clamp(28px,4vw,38px);
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin-top:14px;
+  }
+  .section-desc{
+    margin-top:16px;
+    color:var(--text-muted);
+    font-size:16px;
+  }
+
+  .divider{
+    border:none;
+    border-top:1px solid var(--border);
+  }
+
+  /* ---------- projects ---------- */
+  .projects{display:flex;flex-direction:column;gap:28px;}
+  .pcard{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:36px;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .pcard:hover{border-color:var(--teal-dim);}
+  .pcard-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .pcard-title{
+    font-size:22px;
+    font-weight:600;
+  }
+  .pcard-role{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--text-dim);
+    margin-top:6px;
+  }
+  .pcard-link{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--teal);
+    border:1px solid var(--teal-dim);
+    padding:7px 14px;
+    border-radius:6px;
+    white-space:nowrap;
+    transition:background .2s ease;
+  }
+  .pcard-link:hover{background:rgba(73,197,182,0.1);}
+  .pcard-link.disabled{
+    color:var(--text-dim);
+    border-color:var(--border);
+    cursor:default;
+  }
+  .pcard-desc{
+    margin-top:18px;
+    color:var(--text-muted);
+    font-size:15.5px;
+    max-width:680px;
+  }
+
+  .mini-flow{
+    margin-top:26px;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+  }
+  .mini-flow .stage{
+    color:var(--text);
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    padding:6px 12px;
+    border-radius:5px;
+    white-space:nowrap;
+  }
+  .mini-flow .arrow{
+    color:var(--amber);
+    padding:0 8px;
+  }
+
+  .metrics-row{
+    margin-top:22px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .metric-chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--amber);
+    background:rgba(232,163,61,0.08);
+    border:1px solid var(--amber-dim);
+    padding:6px 12px;
+    border-radius:20px;
+  }
+
+  .tag-row{
+    margin-top:20px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    color:var(--text-muted);
+    padding:5px 10px;
+    border:1px solid var(--border);
+    border-radius:4px;
+  }
+
+  /* ---------- experience ---------- */
+  .exp-card{
+    border-left:2px solid var(--amber-dim);
+    padding-left:28px;
+    position:relative;
+  }
+  .exp-card::before{
+    content:'';
+    position:absolute;
+    left:-6px;top:4px;
+    width:10px;height:10px;
+    border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 10px rgba(232,163,61,0.6);
+  }
+  .exp-title{font-size:20px;font-weight:600;}
+  .exp-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--text-dim);
+    margin-top:6px;
+  }
+  .exp-list{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .exp-list li{
+    list-style:none;
+    color:var(--text-muted);
+    font-size:15px;
+    padding-left:20px;
+    position:relative;
+  }
+  .exp-list li::before{
+    content:'▸';
+    position:absolute;
+    left:0;
+    color:var(--teal);
+  }
+  .exp-list b{color:var(--text);font-weight:600;}
+
+  /* ---------- skills ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .skill-cell{
+    background:var(--surface);
+    padding:26px 28px;
+  }
+  .skill-cat{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:14px;
+  }
+  .skill-items{
+    color:var(--text-muted);
+    font-size:14.5px;
+    line-height:1.9;
+  }
+  @media (max-width:640px){
+    .skills-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- more projects ---------- */
+  .more-list{
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid var(--border);
+  }
+  .more-row{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:24px 4px;
+    border-bottom:1px solid var(--border);
+    transition:padding-left .2s ease;
+  }
+  .more-row:hover{padding-left:10px;}
+  .more-name{
+    font-size:17px;
+    font-weight:600;
+  }
+  .more-desc{
+    color:var(--text-muted);
+    font-size:14.5px;
+    max-width:760px;
+    line-height:1.6;
+  }
+  .more-meta{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:2px;
+  }
+  .more-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--text-dim);
+    white-space:nowrap;
+  }
+  .more-link{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--teal);
+    white-space:nowrap;
+  }
+  @media (max-width:600px){
+    .more-row{flex-direction:column;align-items:flex-start;gap:8px;}
+  }
+
+  /* ---------- eawa expanded entry ---------- */
+  .more-featured{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:28px 30px;
+    margin-bottom:24px;
+  }
+  .more-featured-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .more-featured-title{
+    font-size:19px;
+    font-weight:600;
+  }
+  .more-featured-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--text-dim);
+    margin-top:6px;
+  }
+  .status-badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.04em;
+    color:var(--amber);
+    border:1px solid var(--amber-dim);
+    background:rgba(232,163,61,0.08);
+    padding:5px 12px;
+    border-radius:20px;
+    white-space:nowrap;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .status-badge::before{
+    content:'';
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 6px var(--amber);
+  }
+  .more-featured-list{
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .more-featured-list li{
+    list-style:none;
+    color:var(--text-muted);
+    font-size:14.5px;
+    padding-left:20px;
+    position:relative;
+    line-height:1.6;
+  }
+  .more-featured-list li::before{
+    content:'▸';
+    position:absolute;
+    left:0;
+    color:var(--teal);
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:70px 0 50px;
+    border-top:1px solid var(--border);
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:30px;
+  }
+  .footer-cta h2{margin-top:0;}
+  .footer-links{
+    display:flex;
+    gap:26px;
+    flex-wrap:wrap;
+  }
+  .footer-links a{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13.5px;
+    color:var(--text-muted);
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .footer-links a:hover{color:var(--amber); border-color:var(--amber);}
+  .footer-bottom{
+    margin-top:50px;
+    padding-top:24px;
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--text-dim);
+  }
+
+  @media (max-width:600px){
+    .wrap{padding-left:20px; padding-right:20px;}
+    .hero{padding:70px 0 50px;}
+    section{padding:64px 0;}
+    .pcard{padding:26px 22px;}
+    .mini-flow{gap:8px 0;}
+    .mini-flow .arrow{padding:0 4px;}
+    .pcard-top{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain-bg"></div>
+
+<header>
+  <nav>
+    <div class="logo"><span class="dot"></span>TANMAY&nbsp;KADAM</div>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#more">More</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta-mobile">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="eyebrow">Software Engineer — Binghamton, NY</div>
+    <h1>I build systems that turn <span class="accent">fast, messy data</span> into something people can trust.</h1>
+    <p class="hero-sub">
+      2+ years shipping full-stack platforms and event-driven pipelines — from an enterprise
+      low-code developer platform to real-time streaming analytics. MS Computer Science candidate
+      at SUNY Binghamton.
+    </p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">View Projects →</a>
+      <a href="mailto:tanmay.s.kadam@gmail.com" class="btn btn-ghost">tanmay.s.kadam@gmail.com</a>
+    </div>
+
+    <div class="pipeline">
+      <div class="pipeline-label">// what that looks like, end to end</div>
+      <div class="pipeline-track">
+        <div class="pipeline-line"></div>
+        <div class="pipeline-progress"></div>
+        <div class="pipeline-nodes" id="pnodes">
+          <div class="pnode"><div class="dot"></div><span class="lbl">Ingest</span></div>
+          <div class="pnode"><div class="dot"></div><span class="lbl">Stream</span></div>
+          <div class="pnode"><div class="dot"></div><span class="lbl">Process</span></div>
+          <div class="pnode"><div class="dot"></div><span class="lbl">Store</span></div>
+          <div class="pnode"><div class="dot"></div><span class="lbl">Serve</span></div>
+          <div class="pnode"><div class="dot"></div><span class="lbl">Visualize</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PROJECTS -->
+  <section id="work" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Selected Work</div>
+      <h2>Four systems, four different layers of the same problem.</h2>
+      <p class="section-desc">
+        Three pieces of one enterprise platform — the portal people search, the builder people
+        design in, and the backend that turns designs into shipped code — plus a personal pipeline
+        processing live market data.
+      </p>
+    </div>
+
+    <div class="projects">
+
+      <!-- RapidX Dev Portal -->
+      <article class="pcard">
+        <div class="pcard-top">
+          <div>
+            <div class="pcard-title">RapidX™ Dev Portal</div>
+            <div class="pcard-role">Hexaware Technologies · Software Engineer · Jul 2021 – Aug 2023</div>
+          </div>
+          <span class="pcard-link disabled">Private / Enterprise</span>
+        </div>
+        <p class="pcard-desc">
+          The internal developer portal — the front door to the platform. Engineers discover
+          existing APIs and tools, publish new ones, and get an auto-generated documentation
+          site wired up the moment they submit.
+        </p>
+        <div class="mini-flow">
+          <span class="stage">Submit Tool</span><span class="arrow">→</span>
+          <span class="stage">Catalog (CMS)</span><span class="arrow">→</span>
+          <span class="stage">Auto-Doc (GitHub API)</span><span class="arrow">→</span>
+          <span class="stage">Discover / Search</span>
+        </div>
+        <div class="metrics-row">
+          <span class="metric-chip">~30% lower content latency</span>
+          <span class="metric-chip">20+ modules · 48K+ LOC</span>
+          <span class="metric-chip">500+ engineers reached</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag">React</span><span class="tag">Redux Toolkit</span>
+          <span class="tag">Azure AD (MSAL)</span><span class="tag">GitHub API</span>
+          <span class="tag">Strapi CMS</span>
+        </div>
+      </article>
+
+      <!-- Web Studio -->
+      <article class="pcard">
+        <div class="pcard-top">
+          <div>
+            <div class="pcard-title">RapidX™ Web Studio</div>
+            <div class="pcard-role">Hexaware Technologies · Software Engineer · Jul 2021 – Aug 2023</div>
+          </div>
+          <span class="pcard-link disabled">Private / Enterprise</span>
+        </div>
+        <p class="pcard-desc">
+          A drag-and-drop, low-code page builder — import a design straight from Figma, assemble
+          it visually on canvas, and reuse components and themes published by other teams.
+        </p>
+        <div class="mini-flow">
+          <span class="stage">Import (Figma API)</span><span class="arrow">→</span>
+          <span class="stage">Drag &amp; Drop Canvas</span><span class="arrow">→</span>
+          <span class="stage">Component/Theme Library</span><span class="arrow">→</span>
+          <span class="stage">Preview</span>
+        </div>
+        <div class="metrics-row">
+          <span class="metric-chip">60 FPS visual editor</span>
+          <span class="metric-chip">Figma-to-canvas import</span>
+          <span class="metric-chip">Shared component marketplace</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag">React</span><span class="tag">GrapesJS</span>
+          <span class="tag">React Flow</span><span class="tag">Figma API</span>
+          <span class="tag">Redux</span>
+        </div>
+      </article>
+
+      <!-- RapidX Platform Backend -->
+      <article class="pcard">
+        <div class="pcard-top">
+          <div>
+            <div class="pcard-title">RapidX™ Platform — Codegen &amp; Backend</div>
+            <div class="pcard-role">Hexaware Technologies · Software Engineer · Jul 2021 – Aug 2023</div>
+          </div>
+          <span class="pcard-link disabled">Private / Enterprise</span>
+        </div>
+        <p class="pcard-desc">
+          The microservices layer underneath both apps — compiles a visual design into real,
+          scaffolded source code, ships it through CI/CD, and provisions the cloud workspace
+          it runs in.
+        </p>
+        <div class="mini-flow">
+          <span class="stage">Design In</span><span class="arrow">→</span>
+          <span class="stage">Generate (Codegen Service)</span><span class="arrow">→</span>
+          <span class="stage">Build / Release (CI/CD)</span><span class="arrow">→</span>
+          <span class="stage">Provision (Workspace / K8s)</span>
+        </div>
+        <div class="metrics-row">
+          <span class="metric-chip">React / NestJS / Python codegen · 4 DBs each</span>
+          <span class="metric-chip">6+ microservices</span>
+          <span class="metric-chip">Cloud workspace + Kubernetes provisioning</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag">NestJS</span><span class="tag">.NET Azure Functions</span>
+          <span class="tag">Kubernetes</span><span class="tag">Azure AD</span>
+          <span class="tag">MongoDB</span>
+        </div>
+      </article>
+
+      <!-- Crypto -->
+      <article class="pcard">
+        <div class="pcard-top">
+          <div>
+            <div class="pcard-title">Real-Time Crypto Streaming &amp; Analytics Platform</div>
+            <div class="pcard-role">Personal Project · SUNY Binghamton · Jan – May 2026</div>
+          </div>
+          <a class="pcard-link" href="https://github.com/tkadam99/real-time-crypto-price-streaming-analytics-platform" target="_blank" rel="noopener">View Repo ↗</a>
+        </div>
+        <p class="pcard-desc">
+          An event-driven pipeline that ingests live crypto prices from Coinbase's WebSocket feed,
+          computes rolling moving-average and percent-change analytics through Kafka, and flags
+          price spikes in real time on a React dashboard.
+        </p>
+        <div class="mini-flow">
+          <span class="stage">Coinbase WS</span><span class="arrow">→</span>
+          <span class="stage">Kafka Producer</span><span class="arrow">→</span>
+          <span class="stage">Consumer (Analytics)</span><span class="arrow">→</span>
+          <span class="stage">MongoDB</span><span class="arrow">→</span>
+          <span class="stage">API</span><span class="arrow">→</span>
+          <span class="stage">Dashboard</span>
+        </div>
+        <div class="metrics-row">
+          <span class="metric-chip">100% test coverage · analytics core</span>
+          <span class="metric-chip">Kafka-decoupled ingestion</span>
+          <span class="metric-chip">Per-symbol retention cap</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Node.js</span><span class="tag">KafkaJS</span>
+          <span class="tag">MongoDB</span><span class="tag">Express</span>
+          <span class="tag">React (Vite)</span><span class="tag">Recharts</span>
+          <span class="tag">Jest / Supertest</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Experience</div>
+      <h2>Where I've built this.</h2>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-title">Software Engineer, Hexaware Technologies Pvt. Ltd.</div>
+      <div class="exp-meta">Pune, India · Jul 2021 – Aug 2023 · RapidX™ Platform</div>
+      <ul class="exp-list">
+        <li><b>Architected</b> the Global Asset Catalog frontend and state layer in React/Redux Toolkit, eliminating redundant API calls and re-renders to cut content delivery latency by ~30%.</li>
+        <li><b>Engineered</b> an automated documentation pipeline via the GitHub REST API, auto-provisioning documentation sections on every product submission.</li>
+        <li><b>Contributed</b> to the canvas-to-code microservice pipeline, compiling visual designs into scaffolded React, NestJS, and Python codebases across 4 database backends each.</li>
+        <li><b>Optimized</b> the visual page-builder to sustain 60 FPS during real-time editing by eliminating deep prop-drilling.</li>
+        <li><b>Implemented</b> Azure AD (MSAL) authentication and domain-based access control across the platform.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SKILLS -->
+  <section id="skills" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Toolbox</div>
+      <h2>What I reach for.</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cell">
+        <div class="skill-cat">Languages</div>
+        <div class="skill-items">JavaScript (ES6+), TypeScript, Python, Java, SQL, HTML5, CSS3</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cat">Frontend</div>
+        <div class="skill-items">React, Redux (Toolkit, Hooks), Vite, Recharts</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cat">Backend &amp; Data</div>
+        <div class="skill-items">Node.js, Express, NestJS, Apache Kafka, WebSockets, REST APIs, MongoDB, MySQL, Strapi CMS</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cat">Tools &amp; Cloud</div>
+        <div class="skill-items">Jest, React Testing Library, Supertest, Git, GitHub Actions, Docker, Azure AD (MSAL), CI/CD</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- MORE PROJECTS -->
+  <section id="more" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">More Projects</div>
+      <h2>Smaller builds, still shipped.</h2>
+    </div>
+    <div class="more-featured">
+      <div class="more-featured-top">
+        <div>
+          <div class="more-featured-title">Enterprise AI Workflow Assistant (EAWA)</div>
+          <div class="more-featured-meta">ServiceNow · Personal Project · Jul 2026 – Present</div>
+        </div>
+        <span class="status-badge">In Progress</span>
+      </div>
+      <ul class="more-featured-list">
+        <li>Designed and built the ServiceNow data layer from scratch: custom AI Interaction and Intent Configuration tables, plus ACL-based security scoping across the Service Portal, application, and backend layers.</li>
+        <li>Built and tested the IntentEngine, AIOrchestrator, and AIInteractionLogger Script Includes, classifying natural-language input with confidence scoring and mapping it to a next action (e.g., CREATE_INCIDENT, CLARIFY).</li>
+        <li>Architected the system to add LLM-assisted intent extraction as a future layer on top of a deterministic rules engine, keeping direct ServiceNow record changes under controlled, auditable logic.</li>
+      </ul>
+      <div class="tag-row" style="margin-top:18px;">
+        <span class="tag">ServiceNow</span><span class="tag">Script Includes</span>
+        <span class="tag">Scoped Apps</span><span class="tag">ACLs</span>
+        <span class="tag">Service Portal</span>
+      </div>
+    </div>
+
+    <div class="more-list">
+      <div class="more-row">
+        <span class="more-name">Career Gap Analyzer</span>
+        <span class="more-desc">Rule-based engine that scores resume-to-job fit and surfaces the highest-impact skill gaps by extracting skills with dictionary-driven matching and applying weighted, demand-aware scoring.</span>
+        <div class="more-meta">
+          <span class="more-tag">Python · Streamlit · Pandas</span>
+          <a class="more-link" href="https://github.com/tkadam99/CareerGapAnalyzer" target="_blank" rel="noopener">Repo ↗</a>
+        </div>
+      </div>
+      <div class="more-row">
+        <span class="more-name">Currency Converter</span>
+        <span class="more-desc">Vanilla JS fundamentals exercise — live exchange rates, dynamic dropdowns, and flag icons, built to practice core DOM manipulation without a framework.</span>
+        <div class="more-meta">
+          <span class="more-tag">JavaScript · REST API</span>
+          <a class="more-link" href="https://github.com/tkadam99/currency-converter-js" target="_blank" rel="noopener">Repo ↗</a>
+        </div>
+      </div>
+      <div class="more-row">
+        <span class="more-name">Library Management System</span>
+        <span class="more-desc">CS 544 coursework — a progressive full-stack build: in-memory core logic, then a MongoDB-backed DAO, a REST API, and finally two parallel frontends (vanilla TypeScript and React) against the same backend.</span>
+        <div class="more-meta">
+          <span class="more-tag">TypeScript · Express · MongoDB · React</span>
+          <a class="more-link" href="https://github.com/tkadam99/library-management-system-ts" target="_blank" rel="noopener">Repo ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-cta">
+        <div class="eyebrow">Get in touch</div>
+        <h2>Let's build<br>something reliable.</h2>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:tanmay.s.kadam@gmail.com">Email</a>
+        <a href="https://github.com/tkadam99" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/tanmaykadam99/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Tanmay Kadam — Binghamton, NY</span>
+      <span>Built with HTML, CSS &amp; a little too much Kafka</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // sequential pipeline node lighting, loops with the flow-line animation
+  const nodes = document.querySelectorAll('#pnodes .pnode');
+  let i = 0;
+  function tick(){
+    nodes.forEach(n => n.classList.remove('lit'));
+    for(let k=0;k<=i;k++){ nodes[k].classList.add('lit'); }
+    i = (i+1) % nodes.length;
+  }
+  tick();
+  setInterval(tick, 620);
+</script>
+
+</body>
+</html>
