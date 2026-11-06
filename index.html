@@ -3,11 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanmay Kadam — Software Engineer</title>
-<meta name="description" content="Tanmay Kadam — Software Engineer building resilient data pipelines and full-stack systems.">
+<title>Tanmay Kadam | Software Engineer</title>
+<meta name="description" content="Tanmay Kadam is a software engineer building reliable full-stack systems and data pipelines in Binghamton, NY.">
+<link rel="canonical" href="https://tkadam99.github.io/">
+<meta name="theme-color" content="#0E1420">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tanmay Kadam | Software Engineer">
+<meta property="og:description" content="Tanmay Kadam is a software engineer building reliable full-stack systems and data pipelines in Binghamton, NY.">
+<meta property="og:url" content="https://tkadam99.github.io/">
+<meta property="og:image" content="https://tkadam99.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tanmay Kadam | Software Engineer">
+<meta name="twitter:description" content="Tanmay Kadam is a software engineer building reliable full-stack systems and data pipelines in Binghamton, NY.">
+<meta name="twitter:image" content="https://tkadam99.github.io/og-image.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='18' fill='%23E8A33D'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tanmay Kadam",
+  "jobTitle": "Software Engineer",
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "SUNY Binghamton"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Binghamton",
+    "addressRegion": "NY"
+  },
+  "sameAs": [
+    "https://github.com/tkadam99",
+    "https://www.linkedin.com/in/tanmaykadam99/"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0E1420;
@@ -17,7 +50,7 @@
     --border:#28324A;
     --text:#EDEFF3;
     --text-muted:#8B93A5;
-    --text-dim:#5C6579;
+    --text-dim:#80899D;
     --amber:#E8A33D;
     --amber-dim:#8A661F;
     --teal:#49C5B6;
@@ -46,9 +79,6 @@
 
   a{color:inherit;text-decoration:none;}
 
-  .display{font-family:'Space Grotesk',sans-serif;}
-  .mono{font-family:'JetBrains Mono',monospace;}
-
   ::selection{background:var(--amber);color:var(--bg);}
 
   a:focus-visible, button:focus-visible{
@@ -56,6 +86,20 @@
     outline-offset:3px;
     border-radius:4px;
   }
+
+  .skip-link{
+    position:fixed;
+    top:8px;
+    left:8px;
+    z-index:200;
+    padding:10px 14px;
+    background:var(--amber);
+    color:var(--bg);
+    font-family:'JetBrains Mono',monospace;
+    transform:translateY(calc(-100% - 16px));
+  }
+  .skip-link:focus-visible{transform:translateY(0);}
+  main:focus{outline:none;}
 
   .wrap{
     max-width:var(--maxw);
@@ -80,6 +124,7 @@
     position:sticky;
     top:0;
     z-index:100;
+    -webkit-backdrop-filter:blur(10px);
     backdrop-filter:blur(10px);
     background:rgba(14,20,32,0.82);
     border-bottom:1px solid var(--border);
@@ -119,6 +164,7 @@
     transition:color .2s ease;
   }
   .navlinks a:hover{color:var(--amber);}
+  .nav-menu-toggle{display:none;}
   .nav-cta{
     border:1px solid var(--border);
     padding:7px 16px;
@@ -128,25 +174,74 @@
     transition:border-color .2s ease, background .2s ease;
   }
   .nav-cta:hover{border-color:var(--amber); background:rgba(232,163,61,0.08);}
-  .navtoggle{display:none;}
-  .nav-cta-mobile{display:none;}
 
   @media (max-width:760px){
-    .navlinks{display:none;}
-    .nav-cta-mobile{
-      display:inline-flex;
+    nav{flex-wrap:wrap;}
+    .navlinks{
+      display:flex;
+      flex-basis:100%;
+      flex-wrap:wrap;
+      gap:12px 20px;
+      padding-top:12px;
+    }
+    .nav-menu-toggle{
+      display:none;
+      align-items:center;
+      justify-content:center;
+      width:40px;
+      height:40px;
       border:1px solid var(--border);
-      padding:7px 14px;
       border-radius:6px;
-      font-size:12.5px;
-      font-family:'JetBrains Mono',monospace;
+      background:transparent;
       color:var(--text);
+      cursor:pointer;
+    }
+    .nav-menu-icon{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+    }
+    .nav-menu-icon span{
+      width:18px;
+      height:2px;
+      background:currentColor;
+      border-radius:2px;
+    }
+    .menu-enhanced .navlinks{
+      display:none;
+      position:absolute;
+      top:100%;
+      left:20px;
+      right:20px;
+      z-index:101;
+      flex-basis:auto;
+      flex-direction:column;
+      flex-wrap:nowrap;
+      align-items:stretch;
+      gap:0;
+      padding:8px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:0 12px 28px rgba(0,0,0,0.35);
+    }
+    .menu-enhanced .navlinks.open{display:flex;}
+    .menu-enhanced .navlinks a{padding:10px 12px;}
+    .menu-enhanced .navlinks .nav-cta{border:0;}
+    .menu-enhanced .nav-menu-toggle{
+      display:inline-flex;
+      font-size:0;
+    }
+    .menu-enhanced .nav-menu-toggle:hover{
+      border-color:var(--amber);
+      color:var(--amber);
     }
   }
 
   /* ---------- hero ---------- */
   .hero{
-    padding:100px 0 70px;
+    padding-top:100px;
+    padding-bottom:70px;
     position:relative;
   }
   .eyebrow{
@@ -166,6 +261,7 @@
     background:var(--teal);
   }
   h1{
+    font-family:'Space Grotesk',sans-serif;
     font-size:clamp(38px,6.4vw,68px);
     line-height:1.04;
     font-weight:600;
@@ -179,6 +275,11 @@
     font-size:17.5px;
     color:var(--text-muted);
     line-height:1.65;
+  }
+  .hero-secondary{
+    margin-top:12px;
+    color:var(--text-dim);
+    font-size:14px;
   }
   .hero-actions{
     margin-top:38px;
@@ -216,11 +317,10 @@
     background:var(--surface);
     border:1px solid var(--border);
     border-radius:var(--radius);
-    overflow-x:auto;
   }
   .pipeline-label{
     font-family:'JetBrains Mono',monospace;
-    font-size:11px;
+    font-size:12px;
     color:var(--text-dim);
     letter-spacing:0.1em;
     text-transform:uppercase;
@@ -228,36 +328,30 @@
   }
   .pipeline-track{
     position:relative;
-    min-width:640px;
     height:70px;
   }
   .pipeline-line{
     position:absolute;
-    top:6px;
-    left:0;right:0;
+    top:5.5px;
+    left:8.3333%;right:8.3333%;
     height:1px;
     background:var(--border);
   }
   .pipeline-progress{
     position:absolute;
-    top:6px;
-    left:0;
+    top:5px;
+    left:8.3333%;
     height:2px;
-    width:100%;
+    width:83.3334%;
     background:linear-gradient(90deg, var(--amber), var(--teal));
     transform-origin:left;
-    animation:flow 4.5s ease-in-out infinite;
-    opacity:0.8;
-  }
-  @keyframes flow{
-    0%{transform:scaleX(0);}
-    45%{transform:scaleX(1);}
-    100%{transform:scaleX(1);}
+    transform:scaleX(var(--pipeline-progress, 0));
+    opacity:calc(0.8 * (1 - var(--pipeline-reset, 0)));
   }
   .pipeline-nodes{
     position:relative;
-    display:flex;
-    justify-content:space-between;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
     height:100%;
   }
   .pnode{
@@ -266,6 +360,7 @@
     align-items:center;
     gap:22px;
     position:relative;
+    min-width:0;
   }
   .pnode .dot{
     width:11px;height:11px;
@@ -273,6 +368,7 @@
     background:var(--bg-alt);
     border:2px solid var(--text-dim);
     z-index:2;
+    opacity:calc(1 - var(--pipeline-reset, 0));
     transition:border-color .3s ease, background .3s ease, box-shadow .3s ease;
   }
   .pnode.lit .dot{
@@ -282,9 +378,40 @@
   }
   .pnode span.lbl{
     font-family:'JetBrains Mono',monospace;
-    font-size:11.5px;
+    font-size:12px;
     color:var(--text-muted);
     white-space:nowrap;
+  }
+  .pipeline.is-static .pipeline-progress{transform:scaleX(1);opacity:0.8;}
+  .pipeline.is-static .pnode .dot{opacity:1;}
+  @media (max-width:640px){
+    .pipeline-track{height:auto;padding:8px 0;}
+    .pipeline-line{
+      top:22px;
+      bottom:22px;
+      left:4.5px;
+      right:auto;
+      width:1px;
+      height:auto;
+    }
+    .pipeline-progress{
+      top:22px;
+      bottom:22px;
+      left:4px;
+      width:2px;
+      height:auto;
+      transform:scaleY(var(--pipeline-progress, 0));
+      transform-origin:top;
+      background:linear-gradient(180deg,var(--amber),var(--teal));
+    }
+    .pipeline-nodes{
+      grid-template-columns:1fr;
+      grid-template-rows:repeat(6,28px);
+      gap:8px;
+      height:auto;
+    }
+    .pnode{flex-direction:row;justify-content:flex-start;gap:12px;}
+    .pipeline.is-static .pipeline-progress{transform:scaleY(1);}
   }
 
   /* ---------- sections ---------- */
@@ -294,6 +421,7 @@
     max-width:640px;
   }
   h2{
+    font-family:'Space Grotesk',sans-serif;
     font-size:clamp(28px,4vw,38px);
     font-weight:600;
     letter-spacing:-0.01em;
@@ -317,7 +445,7 @@
     border:1px solid var(--border);
     border-radius:var(--radius);
     padding:36px;
-    transition:border-color .25s ease, transform .25s ease;
+    transition:border-color .25s ease;
   }
   .pcard:hover{border-color:var(--teal-dim);}
   .pcard-top{
@@ -328,8 +456,10 @@
     flex-wrap:wrap;
   }
   .pcard-title{
+    font-family:'Space Grotesk',sans-serif;
     font-size:22px;
     font-weight:600;
+    margin:0;
   }
   .pcard-role{
     font-family:'JetBrains Mono',monospace;
@@ -348,10 +478,11 @@
     transition:background .2s ease;
   }
   .pcard-link:hover{background:rgba(73,197,182,0.1);}
-  .pcard-link.disabled{
+  .source-private{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
     color:var(--text-dim);
-    border-color:var(--border);
-    cursor:default;
+    white-space:nowrap;
   }
   .pcard-desc{
     margin-top:18px;
@@ -388,6 +519,7 @@
     gap:10px;
     flex-wrap:wrap;
   }
+  .metrics-row li,.tag-row li{list-style:none;}
   .metric-chip{
     font-family:'JetBrains Mono',monospace;
     font-size:12px;
@@ -404,9 +536,10 @@
     gap:8px;
     flex-wrap:wrap;
   }
+  .more-featured-tags{margin-top:18px;}
   .tag{
     font-family:'JetBrains Mono',monospace;
-    font-size:11.5px;
+    font-size:12px;
     color:var(--text-muted);
     padding:5px 10px;
     border:1px solid var(--border);
@@ -428,7 +561,7 @@
     background:var(--amber);
     box-shadow:0 0 10px rgba(232,163,61,0.6);
   }
-  .exp-title{font-size:20px;font-weight:600;}
+  .exp-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;margin:0;}
   .exp-meta{
     font-family:'JetBrains Mono',monospace;
     font-size:12.5px;
@@ -470,9 +603,10 @@
     background:var(--surface);
     padding:26px 28px;
   }
+  .skill-cell.service-now{grid-column:1 / -1;}
   .skill-cat{
     font-family:'JetBrains Mono',monospace;
-    font-size:11.5px;
+    font-size:12px;
     letter-spacing:0.08em;
     text-transform:uppercase;
     color:var(--teal);
@@ -499,10 +633,11 @@
     gap:10px;
     padding:24px 4px;
     border-bottom:1px solid var(--border);
-    transition:padding-left .2s ease;
+    transition:transform .2s ease;
   }
-  .more-row:hover{padding-left:10px;}
+  .more-row:hover{transform:translateX(6px);}
   .more-name{
+    font-family:'Space Grotesk',sans-serif;
     font-size:17px;
     font-weight:600;
   }
@@ -521,7 +656,7 @@
   }
   .more-tag{
     font-family:'JetBrains Mono',monospace;
-    font-size:11px;
+    font-size:12px;
     color:var(--text-dim);
     white-space:nowrap;
   }
@@ -531,10 +666,6 @@
     color:var(--teal);
     white-space:nowrap;
   }
-  @media (max-width:600px){
-    .more-row{flex-direction:column;align-items:flex-start;gap:8px;}
-  }
-
   /* ---------- eawa expanded entry ---------- */
   .more-featured{
     background:var(--surface);
@@ -551,8 +682,10 @@
     flex-wrap:wrap;
   }
   .more-featured-title{
+    font-family:'Space Grotesk',sans-serif;
     font-size:19px;
     font-weight:600;
+    margin:0;
   }
   .more-featured-meta{
     font-family:'JetBrains Mono',monospace;
@@ -562,7 +695,7 @@
   }
   .status-badge{
     font-family:'JetBrains Mono',monospace;
-    font-size:11px;
+    font-size:12px;
     letter-spacing:0.04em;
     color:var(--amber);
     border:1px solid var(--amber-dim);
@@ -644,7 +777,8 @@
 
   @media (max-width:600px){
     .wrap{padding-left:20px; padding-right:20px;}
-    .hero{padding:70px 0 50px;}
+    nav{padding-left:20px; padding-right:20px;}
+    .hero{padding-top:70px; padding-bottom:50px;}
     section{padding:64px 0;}
     .pcard{padding:26px 22px;}
     .mini-flow{gap:8px 0;}
@@ -656,40 +790,46 @@
 <body>
 
 <div class="grain-bg"></div>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <header>
   <nav>
     <div class="logo"><span class="dot"></span>TANMAY&nbsp;KADAM</div>
-    <div class="navlinks">
+    <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">
+      <span class="nav-menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <div class="navlinks" id="nav-links">
       <a href="#work">Work</a>
       <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
       <a href="#skills">Skills</a>
       <a href="#more">More</a>
       <a href="#contact" class="nav-cta">Contact</a>
     </div>
-    <a href="#contact" class="nav-cta-mobile">Contact</a>
   </nav>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 
   <!-- HERO -->
   <section class="hero wrap">
     <div class="eyebrow">Software Engineer — Binghamton, NY</div>
     <h1>I build systems that turn <span class="accent">fast, messy data</span> into something people can trust.</h1>
     <p class="hero-sub">
-      2+ years shipping full-stack platforms and event-driven pipelines — from an enterprise
-      low-code developer platform to real-time streaming analytics. MS Computer Science candidate
-      at SUNY Binghamton.
+      Software Engineer with 2+ years of experience building fast, reliable interfaces and the
+      data systems behind them. MS in Computer Science, SUNY Binghamton (Jan 2024–May 2026).
+      Seeking early-career roles, frontend-first.
     </p>
+    <p class="hero-secondary">Also open to ServiceNow Developer roles · Certified ServiceNow Application Developer (CAD) · Certified ServiceNow System Administrator (CSA)</p>
     <div class="hero-actions">
       <a href="#work" class="btn btn-primary">View Projects →</a>
       <a href="mailto:tanmay.s.kadam@gmail.com" class="btn btn-ghost">tanmay.s.kadam@gmail.com</a>
+      <span class="status-badge">Available from December 2026</span>
     </div>
 
-    <div class="pipeline">
-      <div class="pipeline-label">// what that looks like, end to end</div>
-      <div class="pipeline-track">
+    <div class="pipeline" role="img" aria-label="Data flows from ingest to visualization">
+      <div class="pipeline-label" aria-hidden="true">// what that looks like, end to end</div>
+      <div class="pipeline-track" aria-hidden="true">
         <div class="pipeline-line"></div>
         <div class="pipeline-progress"></div>
         <div class="pipeline-nodes" id="pnodes">
@@ -724,10 +864,10 @@
       <article class="pcard">
         <div class="pcard-top">
           <div>
-            <div class="pcard-title">RapidX™ Dev Portal</div>
-            <div class="pcard-role">Hexaware Technologies · Software Engineer · Jul 2021 – Aug 2023</div>
+            <h3 class="pcard-title">RapidX™ Dev Portal</h3>
+            <div class="pcard-role">Hexaware · 2021–2023</div>
           </div>
-          <span class="pcard-link disabled">Private / Enterprise</span>
+          <span class="source-private" role="note" aria-label="Source code is private">Private / Enterprise</span>
         </div>
         <p class="pcard-desc">
           The internal developer portal — the front door to the platform. Engineers discover
@@ -740,26 +880,24 @@
           <span class="stage">Auto-Doc (GitHub API)</span><span class="arrow">→</span>
           <span class="stage">Discover / Search</span>
         </div>
-        <div class="metrics-row">
-          <span class="metric-chip">~30% lower content latency</span>
-          <span class="metric-chip">20+ modules · 48K+ LOC</span>
-          <span class="metric-chip">500+ engineers reached</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag">React</span><span class="tag">Redux Toolkit</span>
-          <span class="tag">Azure AD (MSAL)</span><span class="tag">GitHub API</span>
-          <span class="tag">Strapi CMS</span>
-        </div>
+        <ul class="metrics-row">
+          <li class="metric-chip">20+ feature areas</li>
+        </ul>
+        <ul class="tag-row">
+          <li class="tag">React</li><li class="tag">Redux Toolkit</li>
+          <li class="tag">Azure AD (MSAL)</li><li class="tag">GitHub API</li>
+          <li class="tag">Strapi CMS</li>
+        </ul>
       </article>
 
       <!-- Web Studio -->
       <article class="pcard">
         <div class="pcard-top">
           <div>
-            <div class="pcard-title">RapidX™ Web Studio</div>
-            <div class="pcard-role">Hexaware Technologies · Software Engineer · Jul 2021 – Aug 2023</div>
+            <h3 class="pcard-title">RapidX™ Web Studio</h3>
+            <div class="pcard-role">Hexaware · 2021–2023</div>
           </div>
-          <span class="pcard-link disabled">Private / Enterprise</span>
+          <span class="source-private" role="note" aria-label="Source code is private">Private / Enterprise</span>
         </div>
         <p class="pcard-desc">
           A drag-and-drop, low-code page builder — import a design straight from Figma, assemble
@@ -771,31 +909,30 @@
           <span class="stage">Component/Theme Library</span><span class="arrow">→</span>
           <span class="stage">Preview</span>
         </div>
-        <div class="metrics-row">
-          <span class="metric-chip">60 FPS visual editor</span>
-          <span class="metric-chip">Figma-to-canvas import</span>
-          <span class="metric-chip">Shared component marketplace</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag">React</span><span class="tag">GrapesJS</span>
-          <span class="tag">React Flow</span><span class="tag">Figma API</span>
-          <span class="tag">Redux</span>
-        </div>
+        <ul class="metrics-row">
+          <li class="metric-chip">Figma-to-canvas import</li>
+          <li class="metric-chip">Shared component marketplace</li>
+        </ul>
+        <ul class="tag-row">
+          <li class="tag">React</li><li class="tag">GrapesJS</li>
+          <li class="tag">React Flow</li><li class="tag">Figma API</li>
+          <li class="tag">Redux</li>
+        </ul>
       </article>
 
       <!-- RapidX Platform Backend -->
       <article class="pcard">
         <div class="pcard-top">
           <div>
-            <div class="pcard-title">RapidX™ Platform — Codegen &amp; Backend</div>
-            <div class="pcard-role">Hexaware Technologies · Software Engineer · Jul 2021 – Aug 2023</div>
+            <h3 class="pcard-title">RapidX™ Platform — Codegen &amp; Backend</h3>
+            <div class="pcard-role">Hexaware · 2021–2023</div>
           </div>
-          <span class="pcard-link disabled">Private / Enterprise</span>
+          <span class="source-private" role="note" aria-label="Source code is private">Private / Enterprise</span>
         </div>
         <p class="pcard-desc">
-          The microservices layer underneath both apps — compiles a visual design into real,
-          scaffolded source code, ships it through CI/CD, and provisions the cloud workspace
-          it runs in.
+          RapidX supported multiple application stacks and provided the microservices layer for
+          code generation, CI/CD, and workspace provisioning. My contributions focused on React,
+          Dev Portal, and Web Studio features, plus the Yeoman generators.
         </p>
         <div class="mini-flow">
           <span class="stage">Design In</span><span class="arrow">→</span>
@@ -803,26 +940,26 @@
           <span class="stage">Build / Release (CI/CD)</span><span class="arrow">→</span>
           <span class="stage">Provision (Workspace / K8s)</span>
         </div>
-        <div class="metrics-row">
-          <span class="metric-chip">React / NestJS / Python codegen · 4 DBs each</span>
-          <span class="metric-chip">6+ microservices</span>
-          <span class="metric-chip">Cloud workspace + Kubernetes provisioning</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag">NestJS</span><span class="tag">.NET Azure Functions</span>
-          <span class="tag">Kubernetes</span><span class="tag">Azure AD</span>
-          <span class="tag">MongoDB</span>
-        </div>
+        <ul class="metrics-row">
+          <li class="metric-chip">5 Yeoman generators</li>
+          <li class="metric-chip">3 database variants (PostgreSQL, MySQL, SQL Server)</li>
+          <li class="metric-chip">Platform: 6+ services</li>
+        </ul>
+        <ul class="tag-row">
+          <li class="tag">Yeoman</li><li class="tag">React</li>
+          <li class="tag">Spring Boot</li><li class="tag">PostgreSQL</li>
+          <li class="tag">MySQL</li><li class="tag">SQL Server</li>
+        </ul>
       </article>
 
       <!-- Crypto -->
       <article class="pcard">
         <div class="pcard-top">
           <div>
-            <div class="pcard-title">Real-Time Crypto Streaming &amp; Analytics Platform</div>
+            <h3 class="pcard-title">Real-Time Crypto Streaming &amp; Analytics Platform</h3>
             <div class="pcard-role">Personal Project · SUNY Binghamton · Jan – May 2026</div>
           </div>
-          <a class="pcard-link" href="https://github.com/tkadam99/real-time-crypto-price-streaming-analytics-platform" target="_blank" rel="noopener">View Repo ↗</a>
+          <a class="pcard-link" href="https://github.com/tkadam99/real-time-crypto-price-streaming-analytics-platform" target="_blank" rel="noopener" aria-label="Real-Time Crypto Streaming and Analytics Platform repository (opens in new tab)">View Repo ↗</a>
         </div>
         <p class="pcard-desc">
           An event-driven pipeline that ingests live crypto prices from Coinbase's WebSocket feed,
@@ -837,17 +974,17 @@
           <span class="stage">API</span><span class="arrow">→</span>
           <span class="stage">Dashboard</span>
         </div>
-        <div class="metrics-row">
-          <span class="metric-chip">100% test coverage · analytics core</span>
-          <span class="metric-chip">Kafka-decoupled ingestion</span>
-          <span class="metric-chip">Per-symbol retention cap</span>
-        </div>
-        <div class="tag-row">
-          <span class="tag">Node.js</span><span class="tag">KafkaJS</span>
-          <span class="tag">MongoDB</span><span class="tag">Express</span>
-          <span class="tag">React (Vite)</span><span class="tag">Recharts</span>
-          <span class="tag">Jest / Supertest</span>
-        </div>
+        <ul class="metrics-row">
+          <li class="metric-chip">21 automated tests (16 analytics unit tests + 5 API tests)</li>
+          <li class="metric-chip">Kafka-decoupled ingestion</li>
+          <li class="metric-chip">Per-symbol retention cap</li>
+        </ul>
+        <ul class="tag-row">
+          <li class="tag">Node.js</li><li class="tag">KafkaJS</li>
+          <li class="tag">MongoDB</li><li class="tag">Express</li>
+          <li class="tag">React (Vite)</li><li class="tag">Recharts</li>
+          <li class="tag">Jest / Supertest</li>
+        </ul>
       </article>
 
     </div>
@@ -863,15 +1000,29 @@
     </div>
 
     <div class="exp-card">
-      <div class="exp-title">Software Engineer, Hexaware Technologies Pvt. Ltd.</div>
+      <h3 class="exp-title">Software Engineer, Hexaware Technologies Pvt. Ltd.</h3>
       <div class="exp-meta">Pune, India · Jul 2021 – Aug 2023 · RapidX™ Platform</div>
       <ul class="exp-list">
-        <li><b>Architected</b> the Global Asset Catalog frontend and state layer in React/Redux Toolkit, eliminating redundant API calls and re-renders to cut content delivery latency by ~30%.</li>
-        <li><b>Engineered</b> an automated documentation pipeline via the GitHub REST API, auto-provisioning documentation sections on every product submission.</li>
-        <li><b>Contributed</b> to the canvas-to-code microservice pipeline, compiling visual designs into scaffolded React, NestJS, and Python codebases across 4 database backends each.</li>
-        <li><b>Optimized</b> the visual page-builder to sustain 60 FPS during real-time editing by eliminating deep prop-drilling.</li>
+        <li><b>Architected</b> the Global Asset Catalog frontend and React/Redux Toolkit state layer, reducing redundant API calls and re-renders to improve content delivery latency.</li>
+        <li><b>Automated</b> GitHub REST API documentation setup on product submissions.</li>
+        <li><b>Built</b> five Yeoman generators: React, base Spring Boot, and Spring Boot variants for PostgreSQL, MySQL, and Microsoft SQL Server.</li>
+        <li><b>Optimized</b> the visual page-builder for responsive real-time editing by eliminating deep prop-drilling.</li>
         <li><b>Implemented</b> Azure AD (MSAL) authentication and domain-based access control across the platform.</li>
       </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- EDUCATION -->
+  <section id="education" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Education</div>
+      <h2>Academic background.</h2>
+    </div>
+    <div class="exp-card">
+      <h3 class="exp-title">MS in Computer Science</h3>
+      <div class="exp-meta">SUNY Binghamton · Jan 2024 – May 2026</div>
     </div>
   </section>
 
@@ -886,19 +1037,31 @@
     <div class="skills-grid">
       <div class="skill-cell">
         <div class="skill-cat">Languages</div>
-        <div class="skill-items">JavaScript (ES6+), TypeScript, Python, Java, SQL, HTML5, CSS3</div>
+        <div class="skill-items">JavaScript, TypeScript, Python, Java, SQL</div>
       </div>
       <div class="skill-cell">
         <div class="skill-cat">Frontend</div>
-        <div class="skill-items">React, Redux (Toolkit, Hooks), Vite, Recharts</div>
+        <div class="skill-items">React, Redux Toolkit, Vite, Recharts, React Flow, GrapesJS, HTML, CSS</div>
       </div>
       <div class="skill-cell">
-        <div class="skill-cat">Backend &amp; Data</div>
-        <div class="skill-items">Node.js, Express, NestJS, Apache Kafka, WebSockets, REST APIs, MongoDB, MySQL, Strapi CMS</div>
+        <div class="skill-cat">Backend &amp; APIs</div>
+        <div class="skill-items">Node.js, Express.js, NestJS, Spring Boot, REST APIs, WebSockets, Strapi CMS</div>
       </div>
       <div class="skill-cell">
-        <div class="skill-cat">Tools &amp; Cloud</div>
-        <div class="skill-items">Jest, React Testing Library, Supertest, Git, GitHub Actions, Docker, Azure AD (MSAL), CI/CD</div>
+        <div class="skill-cat">Databases &amp; Messaging</div>
+        <div class="skill-items">MongoDB, PostgreSQL, MySQL, Microsoft SQL Server, Apache Kafka (KafkaJS)</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cat">Cloud &amp; DevOps</div>
+        <div class="skill-items">Microsoft Azure, Docker, GitHub Actions, Git, GitHub, CI/CD</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cat">Testing &amp; Tools</div>
+        <div class="skill-items">Jest, Supertest, Yeoman, Postman, MSAL, Figma API</div>
+      </div>
+      <div class="skill-cell service-now">
+        <div class="skill-cat">ServiceNow</div>
+        <div class="skill-items">Script Includes, GlideRecord, Service Portal, ACLs, Flow Designer, Business Rules, UI Policies, ITSM</div>
       </div>
     </div>
   </section>
@@ -914,7 +1077,7 @@
     <div class="more-featured">
       <div class="more-featured-top">
         <div>
-          <div class="more-featured-title">Enterprise AI Workflow Assistant (EAWA)</div>
+          <h3 class="more-featured-title">Enterprise AI Workflow Assistant (EAWA)</h3>
           <div class="more-featured-meta">ServiceNow · Personal Project · Jul 2026 – Present</div>
         </div>
         <span class="status-badge">In Progress</span>
@@ -924,11 +1087,11 @@
         <li>Built and tested the IntentEngine, AIOrchestrator, and AIInteractionLogger Script Includes, classifying natural-language input with confidence scoring and mapping it to a next action (e.g., CREATE_INCIDENT, CLARIFY).</li>
         <li>Architected the system to add LLM-assisted intent extraction as a future layer on top of a deterministic rules engine, keeping direct ServiceNow record changes under controlled, auditable logic.</li>
       </ul>
-      <div class="tag-row" style="margin-top:18px;">
-        <span class="tag">ServiceNow</span><span class="tag">Script Includes</span>
-        <span class="tag">Scoped Apps</span><span class="tag">ACLs</span>
-        <span class="tag">Service Portal</span>
-      </div>
+      <ul class="tag-row more-featured-tags">
+        <li class="tag">ServiceNow</li><li class="tag">Script Includes</li>
+        <li class="tag">Scoped Apps</li><li class="tag">ACLs</li>
+        <li class="tag">Service Portal</li>
+      </ul>
     </div>
 
     <div class="more-list">
@@ -937,7 +1100,7 @@
         <span class="more-desc">Rule-based engine that scores resume-to-job fit and surfaces the highest-impact skill gaps by extracting skills with dictionary-driven matching and applying weighted, demand-aware scoring.</span>
         <div class="more-meta">
           <span class="more-tag">Python · Streamlit · Pandas</span>
-          <a class="more-link" href="https://github.com/tkadam99/CareerGapAnalyzer" target="_blank" rel="noopener">Repo ↗</a>
+          <a class="more-link" href="https://github.com/tkadam99/CareerGapAnalyzer" target="_blank" rel="noopener" aria-label="Career Gap Analyzer repository (opens in new tab)">Repo ↗</a>
         </div>
       </div>
       <div class="more-row">
@@ -945,7 +1108,7 @@
         <span class="more-desc">Vanilla JS fundamentals exercise — live exchange rates, dynamic dropdowns, and flag icons, built to practice core DOM manipulation without a framework.</span>
         <div class="more-meta">
           <span class="more-tag">JavaScript · REST API</span>
-          <a class="more-link" href="https://github.com/tkadam99/currency-converter-js" target="_blank" rel="noopener">Repo ↗</a>
+          <a class="more-link" href="https://github.com/tkadam99/currency-converter-js" target="_blank" rel="noopener" aria-label="Currency Converter repository (opens in new tab)">Repo ↗</a>
         </div>
       </div>
       <div class="more-row">
@@ -953,7 +1116,7 @@
         <span class="more-desc">CS 544 coursework — a progressive full-stack build: in-memory core logic, then a MongoDB-backed DAO, a REST API, and finally two parallel frontends (vanilla TypeScript and React) against the same backend.</span>
         <div class="more-meta">
           <span class="more-tag">TypeScript · Express · MongoDB · React</span>
-          <a class="more-link" href="https://github.com/tkadam99/library-management-system-ts" target="_blank" rel="noopener">Repo ↗</a>
+          <a class="more-link" href="https://github.com/tkadam99/library-management-system-ts" target="_blank" rel="noopener" aria-label="Library Management System repository (opens in new tab)">Repo ↗</a>
         </div>
       </div>
     </div>
@@ -970,8 +1133,8 @@
       </div>
       <div class="footer-links">
         <a href="mailto:tanmay.s.kadam@gmail.com">Email</a>
-        <a href="https://github.com/tkadam99" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/tanmaykadam99/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/tkadam99" target="_blank" rel="noopener" aria-label="GitHub profile (opens in new tab)">GitHub</a>
+        <a href="https://www.linkedin.com/in/tanmaykadam99/" target="_blank" rel="noopener" aria-label="LinkedIn profile (opens in new tab)">LinkedIn</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -982,16 +1145,96 @@
 </footer>
 
 <script>
-  // sequential pipeline node lighting, loops with the flow-line animation
-  const nodes = document.querySelectorAll('#pnodes .pnode');
-  let i = 0;
-  function tick(){
-    nodes.forEach(n => n.classList.remove('lit'));
-    for(let k=0;k<=i;k++){ nodes[k].classList.add('lit'); }
-    i = (i+1) % nodes.length;
+  const nav = document.querySelector('nav');
+  const menuToggle = document.querySelector('.nav-menu-toggle');
+  const navLinks = document.querySelector('#nav-links');
+
+  function closeMenu(){
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open navigation menu');
+    navLinks.classList.remove('open');
   }
-  tick();
-  setInterval(tick, 620);
+
+  menuToggle.addEventListener('click', () => {
+    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+    menuToggle.setAttribute('aria-label', isExpanded ? 'Open navigation menu' : 'Close navigation menu');
+    navLinks.classList.toggle('open', !isExpanded);
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', event => {
+    if(event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true'){
+      closeMenu();
+      menuToggle.focus();
+    }
+  });
+  document.addEventListener('click', event => {
+    if(!nav.contains(event.target)){ closeMenu(); }
+  });
+  nav.classList.add('menu-enhanced');
+
+  const pipeline = document.querySelector('.pipeline');
+  const nodes = pipeline.querySelectorAll('.pnode');
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const cycleDuration = 6000;
+  const travelDuration = 5000;
+  let elapsed = 0;
+  let lastFrameTime = null;
+  let animationFrame = null;
+  let isVisible = false;
+
+  function renderPipeline(){
+    const cycleTime = elapsed % cycleDuration;
+    const progress = Math.min(cycleTime / travelDuration, 1);
+    const reset = Math.max(0, (cycleTime - travelDuration) / (cycleDuration - travelDuration));
+    pipeline.style.setProperty('--pipeline-progress', progress);
+    pipeline.style.setProperty('--pipeline-reset', reset);
+    nodes.forEach((node, index) => {
+      node.classList.toggle('lit', progress >= index / (nodes.length - 1));
+    });
+  }
+
+  function animatePipeline(timestamp){
+    if(lastFrameTime !== null){ elapsed += timestamp - lastFrameTime; }
+    lastFrameTime = timestamp;
+    renderPipeline();
+    animationFrame = requestAnimationFrame(animatePipeline);
+  }
+
+  function syncPipelineAnimation(){
+    const shouldAnimate = !motionPreference.matches && isVisible && !document.hidden;
+    if(shouldAnimate && animationFrame === null){
+      lastFrameTime = null;
+      animationFrame = requestAnimationFrame(animatePipeline);
+    }else if(!shouldAnimate && animationFrame !== null){
+      cancelAnimationFrame(animationFrame);
+      animationFrame = null;
+      lastFrameTime = null;
+    }
+
+    pipeline.classList.toggle('is-static', motionPreference.matches);
+    if(motionPreference.matches){
+      pipeline.style.setProperty('--pipeline-progress', 1);
+      pipeline.style.setProperty('--pipeline-reset', 0);
+      nodes.forEach(node => node.classList.add('lit'));
+    }
+  }
+
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(entries => {
+      isVisible = entries.some(entry => entry.isIntersecting);
+      syncPipelineAnimation();
+    }).observe(pipeline);
+  }else{
+    isVisible = true;
+  }
+  document.addEventListener('visibilitychange', syncPipelineAnimation);
+  motionPreference.addEventListener('change', () => {
+    elapsed = 0;
+    syncPipelineAnimation();
+    if(!motionPreference.matches){ renderPipeline(); }
+  });
+  syncPipelineAnimation();
 </script>
 
 </body>
