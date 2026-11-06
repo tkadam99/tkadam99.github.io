@@ -276,6 +276,11 @@
     color:var(--text-muted);
     line-height:1.65;
   }
+  .hero-secondary{
+    margin-top:12px;
+    color:var(--text-dim);
+    font-size:14px;
+  }
   .hero-actions{
     margin-top:38px;
     display:flex;
@@ -598,6 +603,7 @@
     background:var(--surface);
     padding:26px 28px;
   }
+  .skill-cell.service-now{grid-column:1 / -1;}
   .skill-cat{
     font-family:'JetBrains Mono',monospace;
     font-size:12px;
@@ -795,6 +801,7 @@
     <div class="navlinks" id="nav-links">
       <a href="#work">Work</a>
       <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
       <a href="#skills">Skills</a>
       <a href="#more">More</a>
       <a href="#contact" class="nav-cta">Contact</a>
@@ -809,13 +816,15 @@
     <div class="eyebrow">Software Engineer — Binghamton, NY</div>
     <h1>I build systems that turn <span class="accent">fast, messy data</span> into something people can trust.</h1>
     <p class="hero-sub">
-      2+ years shipping full-stack platforms and event-driven pipelines — from an enterprise
-      low-code developer platform to real-time streaming analytics. MS Computer Science candidate
-      at SUNY Binghamton.
+      Software Engineer with 2+ years of experience building fast, reliable interfaces and the
+      data systems behind them. MS in Computer Science, SUNY Binghamton (Jan 2024–May 2026).
+      Seeking early-career roles, frontend-first.
     </p>
+    <p class="hero-secondary">Also open to ServiceNow Developer roles · Certified ServiceNow Application Developer (CAD) · Certified ServiceNow System Administrator (CSA)</p>
     <div class="hero-actions">
       <a href="#work" class="btn btn-primary">View Projects →</a>
       <a href="mailto:tanmay.s.kadam@gmail.com" class="btn btn-ghost">tanmay.s.kadam@gmail.com</a>
+      <span class="status-badge">Available from December 2026</span>
     </div>
 
     <div class="pipeline" role="img" aria-label="Data flows from ingest to visualization">
@@ -856,7 +865,7 @@
         <div class="pcard-top">
           <div>
             <h3 class="pcard-title">RapidX™ Dev Portal</h3>
-            <div class="pcard-role">Hexaware Technologies · Software Engineer · Jul 2021 – Aug 2023</div>
+            <div class="pcard-role">Hexaware · 2021–2023</div>
           </div>
           <span class="source-private" role="note" aria-label="Source code is private">Private / Enterprise</span>
         </div>
@@ -872,9 +881,7 @@
           <span class="stage">Discover / Search</span>
         </div>
         <ul class="metrics-row">
-          <li class="metric-chip">~30% lower content latency</li>
-          <li class="metric-chip">20+ modules · 48K+ LOC</li>
-          <li class="metric-chip">500+ engineers reached</li>
+          <li class="metric-chip">20+ feature areas</li>
         </ul>
         <ul class="tag-row">
           <li class="tag">React</li><li class="tag">Redux Toolkit</li>
@@ -888,7 +895,7 @@
         <div class="pcard-top">
           <div>
             <h3 class="pcard-title">RapidX™ Web Studio</h3>
-            <div class="pcard-role">Hexaware Technologies · Software Engineer · Jul 2021 – Aug 2023</div>
+            <div class="pcard-role">Hexaware · 2021–2023</div>
           </div>
           <span class="source-private" role="note" aria-label="Source code is private">Private / Enterprise</span>
         </div>
@@ -903,7 +910,6 @@
           <span class="stage">Preview</span>
         </div>
         <ul class="metrics-row">
-          <li class="metric-chip">60 FPS visual editor</li>
           <li class="metric-chip">Figma-to-canvas import</li>
           <li class="metric-chip">Shared component marketplace</li>
         </ul>
@@ -919,14 +925,14 @@
         <div class="pcard-top">
           <div>
             <h3 class="pcard-title">RapidX™ Platform — Codegen &amp; Backend</h3>
-            <div class="pcard-role">Hexaware Technologies · Software Engineer · Jul 2021 – Aug 2023</div>
+            <div class="pcard-role">Hexaware · 2021–2023</div>
           </div>
           <span class="source-private" role="note" aria-label="Source code is private">Private / Enterprise</span>
         </div>
         <p class="pcard-desc">
-          The microservices layer underneath both apps — compiles a visual design into real,
-          scaffolded source code, ships it through CI/CD, and provisions the cloud workspace
-          it runs in.
+          RapidX supported multiple application stacks and provided the microservices layer for
+          code generation, CI/CD, and workspace provisioning. My contributions focused on React,
+          Dev Portal, and Web Studio features, plus the Yeoman generators.
         </p>
         <div class="mini-flow">
           <span class="stage">Design In</span><span class="arrow">→</span>
@@ -935,14 +941,14 @@
           <span class="stage">Provision (Workspace / K8s)</span>
         </div>
         <ul class="metrics-row">
-          <li class="metric-chip">React / NestJS / Python codegen · 4 DBs each</li>
-          <li class="metric-chip">6+ microservices</li>
-          <li class="metric-chip">Cloud workspace + Kubernetes provisioning</li>
+          <li class="metric-chip">5 Yeoman generators</li>
+          <li class="metric-chip">3 database variants (PostgreSQL, MySQL, SQL Server)</li>
+          <li class="metric-chip">Platform: 6+ services</li>
         </ul>
         <ul class="tag-row">
-          <li class="tag">NestJS</li><li class="tag">.NET Azure Functions</li>
-          <li class="tag">Kubernetes</li><li class="tag">Azure AD</li>
-          <li class="tag">MongoDB</li>
+          <li class="tag">Yeoman</li><li class="tag">React</li>
+          <li class="tag">Spring Boot</li><li class="tag">PostgreSQL</li>
+          <li class="tag">MySQL</li><li class="tag">SQL Server</li>
         </ul>
       </article>
 
@@ -969,7 +975,7 @@
           <span class="stage">Dashboard</span>
         </div>
         <ul class="metrics-row">
-          <li class="metric-chip">100% test coverage · analytics core</li>
+          <li class="metric-chip">21 automated tests (16 analytics unit tests + 5 API tests)</li>
           <li class="metric-chip">Kafka-decoupled ingestion</li>
           <li class="metric-chip">Per-symbol retention cap</li>
         </ul>
@@ -997,12 +1003,26 @@
       <h3 class="exp-title">Software Engineer, Hexaware Technologies Pvt. Ltd.</h3>
       <div class="exp-meta">Pune, India · Jul 2021 – Aug 2023 · RapidX™ Platform</div>
       <ul class="exp-list">
-        <li><b>Architected</b> the Global Asset Catalog frontend and state layer in React/Redux Toolkit, eliminating redundant API calls and re-renders to cut content delivery latency by ~30%.</li>
-        <li><b>Engineered</b> an automated documentation pipeline via the GitHub REST API, auto-provisioning documentation sections on every product submission.</li>
-        <li><b>Contributed</b> to the canvas-to-code microservice pipeline, compiling visual designs into scaffolded React, NestJS, and Python codebases across 4 database backends each.</li>
-        <li><b>Optimized</b> the visual page-builder to sustain 60 FPS during real-time editing by eliminating deep prop-drilling.</li>
+        <li><b>Architected</b> the Global Asset Catalog frontend and React/Redux Toolkit state layer, reducing redundant API calls and re-renders to improve content delivery latency.</li>
+        <li><b>Automated</b> GitHub REST API documentation setup on product submissions.</li>
+        <li><b>Built</b> five Yeoman generators: React, base Spring Boot, and Spring Boot variants for PostgreSQL, MySQL, and Microsoft SQL Server.</li>
+        <li><b>Optimized</b> the visual page-builder for responsive real-time editing by eliminating deep prop-drilling.</li>
         <li><b>Implemented</b> Azure AD (MSAL) authentication and domain-based access control across the platform.</li>
       </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- EDUCATION -->
+  <section id="education" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Education</div>
+      <h2>Academic background.</h2>
+    </div>
+    <div class="exp-card">
+      <h3 class="exp-title">MS in Computer Science</h3>
+      <div class="exp-meta">SUNY Binghamton · Jan 2024 – May 2026</div>
     </div>
   </section>
 
@@ -1017,19 +1037,31 @@
     <div class="skills-grid">
       <div class="skill-cell">
         <div class="skill-cat">Languages</div>
-        <div class="skill-items">JavaScript (ES6+), TypeScript, Python, Java, SQL, HTML5, CSS3</div>
+        <div class="skill-items">JavaScript, TypeScript, Python, Java, SQL</div>
       </div>
       <div class="skill-cell">
         <div class="skill-cat">Frontend</div>
-        <div class="skill-items">React, Redux (Toolkit, Hooks), Vite, Recharts</div>
+        <div class="skill-items">React, Redux Toolkit, Vite, Recharts, React Flow, GrapesJS, HTML, CSS</div>
       </div>
       <div class="skill-cell">
-        <div class="skill-cat">Backend &amp; Data</div>
-        <div class="skill-items">Node.js, Express, NestJS, Apache Kafka, WebSockets, REST APIs, MongoDB, MySQL, Strapi CMS</div>
+        <div class="skill-cat">Backend &amp; APIs</div>
+        <div class="skill-items">Node.js, Express.js, NestJS, Spring Boot, REST APIs, WebSockets, Strapi CMS</div>
       </div>
       <div class="skill-cell">
-        <div class="skill-cat">Tools &amp; Cloud</div>
-        <div class="skill-items">Jest, React Testing Library, Supertest, Git, GitHub Actions, Docker, Azure AD (MSAL), CI/CD</div>
+        <div class="skill-cat">Databases &amp; Messaging</div>
+        <div class="skill-items">MongoDB, PostgreSQL, MySQL, Microsoft SQL Server, Apache Kafka (KafkaJS)</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cat">Cloud &amp; DevOps</div>
+        <div class="skill-items">Microsoft Azure, Docker, GitHub Actions, Git, GitHub, CI/CD</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cat">Testing &amp; Tools</div>
+        <div class="skill-items">Jest, Supertest, Yeoman, Postman, MSAL, Figma API</div>
+      </div>
+      <div class="skill-cell service-now">
+        <div class="skill-cat">ServiceNow</div>
+        <div class="skill-items">Script Includes, GlideRecord, Service Portal, ACLs, Flow Designer, Business Rules, UI Policies, ITSM</div>
       </div>
     </div>
   </section>
